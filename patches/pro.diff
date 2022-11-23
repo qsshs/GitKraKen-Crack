@@ -1,0 +1,30 @@
+--- src/render/static/entryPoints/main/index.js
++++ src/render/static/entryPoints/main/index.js
+@@ -2,7 +2,27 @@
+ // instead, you want to edit src/js/main.jsx instead
+ /* eslint-disable no-console */
+
++function PatchSnapshot() {
++  const edmLiteD = snapshotResult.customRequire('@axosoft/edm-lite-d/src/d.js');
++  snapshotResult.customRequire.cache['@axosoft/edm-lite-d/src/d.js'] = {
++    exports: function() {
++      let response = JSON.parse(edmLiteD(...arguments).toString('utf8'));
++      if ('licenseExpiresAt' in response || 'licensedFeatures' in response) {
++        response = {
++          ...response,
++          availableTrialDays: null,
++          licenseExpiresAt: 8640000000000000,
++          licensedFeatures: ['pro']
++        };
++      }
++      return Buffer.from(JSON.stringify(response), 'utf8');
++    }
++  };
++}
++
+ (function() {
++  PatchSnapshot();
++
+   const Perf = snapshotResult.customRequire('./src/js/utils/Performance.js');
+   Perf.timeEnd('loading monaco scripts');
+   Perf.time('index.js pre-bootstrap');

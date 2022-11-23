@@ -1,0 +1,51 @@
+{
+  "name": "gitcracken",
+  "description": "GitKraken utils for non-commercial use",
+  "author": "KillWolfVlad",
+  "version": "0.6.2",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://pastebin.com/u/KillWolfVlad",
+  "main": "dist/index.js",
+  "bin": {
+    "gitcracken": "dist/bin/gitcracken.js"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "gitcracken": "node dist/bin/gitcracken.js",
+    "gitcracken:dev": "node $NODE_DEBUG_OPTION -r ts-node/register bin/gitcracken.ts",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "dependencies": {
+    "asar": "^2.0.1",
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "diff": "^4.0.1",
+    "figlet": "^1.2.3",
+    "fs-extra": "^8.1.0",
+    "getmac": "^1.4.6",
+    "natsort": "^2.0.2",
+    "node-emoji": "^1.10.0",
+    "pkg-dir": "^4.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/diff": "^4.0.2",
+    "@types/figlet": "^1.2.0",
+    "@types/fs-extra": "^8.0.0",
+    "@types/node": "^12.0.10",
+    "@types/node-emoji": "^1.8.1",
+    "@types/uuid": "^3.4.4",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.2"
+  },
+  "files": [
+    "dist",
+    "patches"
+  ]
+}

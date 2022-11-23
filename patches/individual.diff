@@ -1,0 +1,30 @@
+--- static/index.js
++++ static/index.js
+@@ -1,7 +1,27 @@
+ // Warning: You almost certainly do *not* want to edit this code -
+ // instead, you want to edit src/js/main.jsx instead
+
++function PatchSnapshot() {
++  const edmLiteD = snapshotResult.customRequire('@axosoft/edm-lite-d/src/d.js');
++  snapshotResult.customRequire.cache['@axosoft/edm-lite-d/src/d.js'] = {
++    exports: function() {
++      let response = JSON.parse(edmLiteD(...arguments).toString('utf8'));
++      if ('licenseExpiresAt' in response || 'licensedFeatures' in response) {
++        response = {
++          ...response,
++          availableTrialDays: null,
++          licenseExpiresAt: 8640000000000000,
++          licensedFeatures: ['individual']
++        };
++      }
++      return Buffer.from(JSON.stringify(response), 'utf8');
++    }
++  };
++}
++
+ (function() {
++  PatchSnapshot();
++
+   const Perf = snapshotResult.customRequire('./src/js/utils/Performance.js');
+   Perf.timeEnd('loading monaco scripts');
+   Perf.time('index.js pre-bootstrap');

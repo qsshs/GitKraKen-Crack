@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "esnext"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "lf",
+    "outDir": "./dist",
+    "removeComments": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": [
+    "./node_modules"
+  ],
+  "include": [
+    "./**/*.ts"
+  ]
+}
