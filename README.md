@@ -6,6 +6,9 @@ GitKraKen8.2.0-9.x的破解使用
 - yarn
 - GitKraKen v8.2.0-9.x
 
+## gitkraken下载地址
+[gitkraken](https://www.gitkraken.com/git-client/try-free)
+
 ## 破解步骤
 
 下载之后需要先运行安装下载的GitKraken（它会自动安装到AppData/Local/gitkraken9.x中）。安装完毕后将会自动打开gitkraken，此时直接将其关闭即可。
